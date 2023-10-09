@@ -1,5 +1,5 @@
-github.com/ProductionPanic/go-cursor v0.0.0-20231009114945-428c5f26b3ae h1:BpnCSqWn3279HB1meK4VyugtLPacHp233KPoLzwPZQw=
-github.com/ProductionPanic/go-cursor v0.0.0-20231009114945-428c5f26b3ae/go.mod h1:khkjhBk0Wu3ZNz7OWJj1EFsBJSUtpSJdv+RgsYqTAa0=
+github.com/ProductionPanic/go-cursor v0.0.0-20231009115159-dcc6a7a6b452 h1:wwYyAFa37MNeFqUXbUTQCr4emh53F1QSiskFjXy8klc=
+github.com/ProductionPanic/go-cursor v0.0.0-20231009115159-dcc6a7a6b452/go.mod h1:khkjhBk0Wu3ZNz7OWJj1EFsBJSUtpSJdv+RgsYqTAa0=
 github.com/ProductionPanic/go-pretty v0.0.0-20231007234658-17688852fbb7 h1:SgriOGNcH6fbsgCXpiwAPh58OUJV9iW+zDHh72M6Kog=
 github.com/ProductionPanic/go-pretty v0.0.0-20231007234658-17688852fbb7/go.mod h1:Sr6cEMuI96h80OvSnkxo4efDpMND6kcB24gt4nw8vNw=
 github.com/eiannone/keyboard v0.0.0-20220611211555-0d226195f203 h1:XBBHcIb256gUJtLmY22n99HaZTz+r2Z51xUPi01m3wg=

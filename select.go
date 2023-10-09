@@ -58,7 +58,6 @@ func (s *Select) getValueByIndex(index int) any {
 
 func (s *Select) Run() any {
 	cursor.Hide()
-	defer cursor.Show()
 	keys := s.getKeys()
 	for {
 		pretty.Println(s.Prompt)
@@ -71,6 +70,7 @@ func (s *Select) Run() any {
 		}
 		char, key, err := keyboard.GetSingleKey()
 		if err != nil {
+			cursor.Show()
 			panic(err)
 		}
 		if key == keyboard.KeyArrowUp {
@@ -84,12 +84,15 @@ func (s *Select) Run() any {
 			}
 		}
 		if key == keyboard.KeyEnter {
+			cursor.Show()
 			return s.getValueByIndex(s.Selected)
 		}
 		if char == 'q' {
+			cursor.Show()
 			return nil
 		}
 
 		cursor.Up(len(keys) + 1)
 	}
+	cursor.Show()
 }
