@@ -62,12 +62,12 @@ func (s *Select) Run() any {
 	cursor.Hide()
 	keys := s.getKeys()
 	for {
-		pretty.Println(s.Prompt)
+		pretty.Println("[blue,bold]" + s.Prompt + "[reset,dim,white] (q to quit)[reset]")
 		for i, key := range keys {
 			if i == s.Selected {
-				pretty.Printf("> %s\n", key)
+				pretty.Printf("[cyan]>[reset]  %s\n", key)
 			} else {
-				pretty.Printf("  %s\n", key)
+				pretty.Printf("   %s\n", key)
 			}
 		}
 		char, key, err := keyboard.GetSingleKey()
