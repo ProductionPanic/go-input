@@ -18,10 +18,12 @@ type ListItem struct {
 }
 
 func NewSelect(prompt string) *Select {
-	return &Select{
-		Prompt: prompt,
-		List:   []ListItem{},
+	sel := &Select{
+		Prompt:   prompt,
+		Selected: 0,
+		List:     make([]ListItem, 0),
 	}
+	return sel
 }
 
 func (s *Select) AddItem(name string, value any) {
