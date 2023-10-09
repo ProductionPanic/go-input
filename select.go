@@ -8,8 +8,13 @@ import (
 
 type Select struct {
 	Prompt   string
-	List     map[string]any
+	List     []ListItem
 	Selected int
+}
+
+type ListItem struct {
+	Name  string
+	Value any
 }
 
 func NewSelect(prompt string) *Select {
@@ -19,26 +24,31 @@ func NewSelect(prompt string) *Select {
 }
 
 func (s *Select) AddItem(name string, value any) {
-	s.List[name] = value
+	s.List = append(s.List, ListItem{name, value})
 }
 
 func (s *Select) getKeys() []string {
 	var keys []string
 	for key := range s.List {
-		keys = append(keys, key)
+		keys = append(keys, s.List[key].Name)
 	}
 	return keys
 }
 
 func (s *Select) getValueByKey(key string) any {
-	return s.List[key]
+	for _, value := range s.List {
+		if value.Name == key {
+			return value
+		}
+	}
+	return nil
 }
 
 func (s *Select) getValueByIndex(index int) any {
 	var _i int
 	for _, value := range s.List {
 		if _i == index {
-			return value
+			return value.Value
 		}
 		_i++
 	}
