@@ -96,6 +96,5 @@ func (s *Select) Run() any {
 
 		cursor.Up(len(keys) + 1)
 	}
-	cursor.Show()
-	return nil
+
 }
