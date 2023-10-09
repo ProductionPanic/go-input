@@ -1,0 +1,11 @@
+module github.com/ProductionPanic/go-input
+
+go 1.21.0
+
+require (
+	github.com/ProductionPanic/go-cursor v0.0.0-20231009114945-428c5f26b3ae
+	github.com/ProductionPanic/go-pretty v0.0.0-20231007234658-17688852fbb7
+	github.com/eiannone/keyboard v0.0.0-20220611211555-0d226195f203
+)
+
+require golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
