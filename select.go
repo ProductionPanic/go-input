@@ -69,7 +69,7 @@ func (s *Select) Run() any {
 				pretty.Printf("  %s\n", key)
 			}
 		}
-		char, key, err := keyboard.GetKey()
+		char, key, err := keyboard.GetSingleKey()
 		if err != nil {
 			panic(err)
 		}
