@@ -20,6 +20,7 @@ type ListItem struct {
 func NewSelect(prompt string) *Select {
 	return &Select{
 		Prompt: prompt,
+		List:   []ListItem{},
 	}
 }
 
@@ -54,6 +55,7 @@ func (s *Select) getValueByIndex(index int) any {
 	}
 	return nil
 }
+
 func (s *Select) Run() any {
 	cursor.Hide()
 	defer cursor.Show()
