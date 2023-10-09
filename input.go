@@ -18,10 +18,6 @@ func GetInt(prompt string) int {
 	return NewTextInput(prompt).RunInt()
 }
 
-func GetFloat(prompt string) float64 {
-	return float64(NewTextInput(prompt).RunInt())
-}
-
 func NewTextInput(prompt string) *TextInput {
 	return &TextInput{
 		Prompt: prompt,
@@ -40,11 +36,4 @@ func (t *TextInput) RunInt() int {
 	var outInt int
 	fmt.Sscanf(output, "%d", &outInt)
 	return outInt
-}
-
-func (t *TextInput) RunFloat() float64 {
-	output := t.Run()
-	var outFloat float64
-	fmt.Sscanf(output, "%f", &outFloat)
-	return outFloat
 }
