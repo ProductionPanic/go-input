@@ -24,16 +24,14 @@ func NewTextInput(prompt string) *TextInput {
 	}
 }
 
-func (t *TextInput) Run() string {
-	var output string
-	pretty.Println(t.Prompt)
-	fmt.Scanln(&output)
-	return output
-}
-
 func (t *TextInput) RunInt() int {
-	output := t.Run()
-	var outInt int
-	fmt.Sscanf(output, "%d", &outInt)
-	return outInt
+	reader := bufio.NewReader(os.Stdin)
+	text, _ := reader.ReadString('\n')
+	i, _ := strconv.Atoi(strings.TrimSpace(text))
+	return i
+}
+func (t *TextInput) Run() string {
+	reader := bufio.NewReader(os.Stdin)
+	text, _ := reader.ReadString('\n')
+	return strings.TrimSpace(text)
 }
