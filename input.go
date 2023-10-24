@@ -1,7 +1,11 @@
 package input
 
 import (
-	"fmt"
+	"bufio"
+	"os"
+	"strconv"
+	"strings"
+
 	"github.com/ProductionPanic/go-pretty"
 )
 
@@ -10,11 +14,11 @@ type TextInput struct {
 	Default string
 }
 
-func GetText(prompt string) string {
+func GetText(prompt string) (string, error) {
 	return NewTextInput(prompt).Run()
 }
 
-func GetInt(prompt string) int {
+func GetInt(prompt string) (int, error) {
 	return NewTextInput(prompt).RunInt()
 }
 
@@ -24,14 +28,33 @@ func NewTextInput(prompt string) *TextInput {
 	}
 }
 
-func (t *TextInput) RunInt() int {
+func (t *TextInput) __get_input() (string, error) {
 	reader := bufio.NewReader(os.Stdin)
-	text, _ := reader.ReadString('\n')
-	i, _ := strconv.Atoi(strings.TrimSpace(text))
-	return i
+	return reader.ReadString('\n')
 }
-func (t *TextInput) Run() string {
-	reader := bufio.NewReader(os.Stdin)
-	text, _ := reader.ReadString('\n')
-	return strings.TrimSpace(text)
+
+func (t *TextInput) RunInt() (int, error) {
+	pretty.Println(t.Prompt)
+	text, err := t.__get_input()
+	if err != nil {
+		return 0, err
+	}
+	text = strings.TrimSpace(text)
+	if text == "" {
+		text = t.Default
+	}
+	return strconv.Atoi(text)
+}
+
+func (t *TextInput) Run() (string, error) {
+	pretty.Println(t.Prompt)
+	text, err := t.__get_input()
+	if err != nil {
+		return "", err
+	}
+	text = strings.TrimSpace(text)
+	if text == "" {
+		text = t.Default
+	}
+	return text, nil
 }
