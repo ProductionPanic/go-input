@@ -2,11 +2,13 @@ package input
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
 
 	"github.com/ProductionPanic/go-pretty"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 type TextInput struct {
@@ -57,4 +59,33 @@ func (t *TextInput) Run() (string, error) {
 		text = t.Default
 	}
 	return text, nil
+}
+
+type PasswordInput struct {
+	Prompt  string
+	Default string
+}
+
+func NewPasswordInput(prompt string) *PasswordInput {
+	return &PasswordInput{
+		Prompt: prompt,
+	}
+}
+
+func (p *PasswordInput) Run() (string, error) {
+	fmt.Print(p.Prompt)
+	bytePassword, err := terminal.ReadPassword(int(os.Stdin.Fd()))
+	if err != nil {
+		return "", err
+	}
+	password := string(bytePassword)
+	password = strings.TrimSpace(password)
+	if password == "" {
+		password = p.Default
+	}
+	return password, nil
+}
+
+func GetPassword(prompt string) (string, error) {
+	return NewPasswordInput(prompt).Run()
 }
